@@ -22,4 +22,8 @@ Spell *-- "5,n" Aspect
 class Book <<list>>
 
 Book *-- "1,n" Spell
+
+class PDFParser
+
+PDFParser -> Book : "Creates"
 @enduml

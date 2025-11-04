@@ -1,7 +1,7 @@
 \beamer@sectionintoc {1}{The DSL Conundrum --- You have a problem...}{4}{0}{1}
 \beamer@sectionintoc {2}{DSL Design}{8}{0}{2}
-\beamer@sectionintoc {3}{Case Study 1 --- Dice}{21}{0}{3}
-\beamer@sectionintoc {4}{Case Study 2 --- OpenD6 Spells}{26}{0}{4}
-\beamer@sectionintoc {5}{Conclusion}{42}{0}{5}
-\beamer@sectionintoc {6}{\translate {Appendix}}{48}{1}{6}
-\beamer@subsectionintoc {6}{1}{Malicius Actors}{49}{1}{6}
+\beamer@sectionintoc {3}{Case Study 1 --- TTRPG ``dice expressions''}{15}{0}{3}
+\beamer@sectionintoc {4}{Case Study 2 --- \textbf {OpenD6} spells}{23}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{43}{0}{5}
+\beamer@sectionintoc {6}{\translate {Appendix}}{49}{1}{6}
+\beamer@subsectionintoc {6}{1}{Malicious Actors}{50}{1}{6}
