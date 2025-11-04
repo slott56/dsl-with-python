@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{Die}\PYG{p}{:}
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{faces}\PYG{p}{:} \PYG{n+nb}{int} \PYG{o}{=} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{n}{n}\PYG{p}{:} \PYG{n+nb}{int} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{o}{...}
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}rmul\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{other}\PYG{p}{:} \PYG{n}{Any}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Die}\PYG{p}{:}
+        \PYG{k}{match} \PYG{n}{other}\PYG{p}{:}
+            \PYG{k}{case} \PYG{n+nb}{int}\PYG{p}{():}
+                \PYG{k}{return} \PYG{n}{Die}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{faces}\PYG{p}{,} \PYG{n}{n} \PYG{o}{*} \PYG{n}{other}\PYG{p}{)}
+            \PYG{k}{case}\PYG{+w}{ }\PYG{k}{\PYGZus{}}\PYG{p}{:}
+                \PYG{k}{return} \PYG{n+nb+bp}{NotImplemented}
+
+\PYG{n}{D6} \PYG{o}{=} \PYG{n}{D}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}
+\end{MintedVerbatim}

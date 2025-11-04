@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{global\PYGZus{}defs}\PYG{p}{:} \PYG{n+nb}{dict}\PYG{p}{[}\PYG{n+nb}{str}\PYG{p}{,} \PYG{n}{Any}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{n}{local\PYGZus{}vars}\PYG{p}{:} \PYG{n+nb}{dict}\PYG{p}{[}\PYG{n+nb}{str}\PYG{p}{,} \PYG{n}{Any}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{n}{exec}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}from magic2 import *\PYGZdq{}}\PYG{p}{,} \PYG{n}{global\PYGZus{}defs}\PYG{p}{,} \PYG{n}{local\PYGZus{}vars}\PYG{p}{)}
+\PYG{n}{exec}\PYG{p}{(}\PYG{n}{source}\PYG{p}{,} \PYG{n}{global\PYGZus{}defs}\PYG{p}{,} \PYG{n}{local\PYGZus{}vars}\PYG{p}{)}
+\PYG{k}{return} \PYG{n}{local\PYGZus{}vars}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}spells\PYGZdq{}}\PYG{p}{]}
+\end{MintedVerbatim}

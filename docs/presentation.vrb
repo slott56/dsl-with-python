@@ -1,0 +1,13 @@
+\frametitle{The \texttt{AllImports} visitor}
+        \begin{minted}[autogobble,fontsize=\scriptsize]{python}
+class AllImports(ast.NodeVisitor):
+    def __init__(self, source: str) -> None:
+        self.source = source
+        self.imports: list[str | None] = []
+
+    def visit_Import(self, node: ast.Import) -> None:
+        self.imports.append(ast.get_source_segment(self.source, node))
+
+    def visit_ImportFrom(self, node: ast.ImportFrom) -> None:
+        self.imports.append(ast.get_source_segment(self.source, node))
+        \end{minted}

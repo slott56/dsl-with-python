@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Aspect {
+    format: str
+    difficulty: float
+}
+
+class Spell {
+    name: str
+    effect: Aspect
+    duration: Aspect
+    range: Aspect
+    casting_time: Aspect
+    speed: Aspect
+    other_aspects: dict[str, Aspect]
+    other_conditions: list[Aspect]
+}
+
+Spell *-- "5,n" Aspect
+
+class Book <<list>>
+
+Book *-- "1,n" Spell
+@enduml

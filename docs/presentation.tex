@@ -1,0 +1,512 @@
+%! Author = slott
+%! Date = 11/1/25
+
+% Preamble
+\documentclass{beamer}
+
+% To add guillemots for use in UML images.
+\usepackage[T1]{fontenc}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{minted}
+\usepackage{hyperref}
+\usepackage{qrcode}
+
+% \usetheme{PaloAlto}
+% \usetheme{Berkeley}
+\usetheme{Goettingen}
+\usecolortheme{seagull}
+
+\title{DSL Design with Python}
+\subtitle{Using TTRPG Examples}
+\author{S.Lott}
+\institute{\texttt{\underline{https://fosstodon.org/@slott56}}\linebreak{}\texttt{\underline{https://github.com/slott56}}}
+\date{1-Nov-2025}
+
+% Document
+\begin{document}
+
+\frame{
+    \titlepage
+}
+
+%\begin{frame}
+%    \frametitle{Link to Slide Deck Repository}
+%    \qrcode[link]{https://github.com/slott56/dsl-with-python}
+%    \hfill
+%    \underline{https://github.com/slott56/dsl-with-python}
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+
+\section[A Conundrum]{The DSL Conundrum --- You have a problem...}
+
+    \begin{frame}[fragile]
+        \frametitle{You have a Problem...}
+
+        \begin{quote}
+        Before a small brick building surrounded by forest.
+        A stream flows out of the building and down a gully.
+        \end{quote}
+
+        \vspace{1em}
+        You find a door with a giant lock and two keys with labels.
+
+        \vspace{1em}
+        Above the door is this quote:
+
+        \begin{quote}
+            Some people, when confronted with a problem, think “I know, I’ll use regular expressions.” Now they have two problems.
+        \end{quote}
+
+        The labels:
+        \begin{itemize}
+        \item ``RE's are bad; RE $\subseteq$ DSL $\therefore$ $\forall$ DSL's are bad. $\blacksquare$''
+
+        \item ``He always lies.''
+        \end{itemize}
+
+    \end{frame}
+
+    \begin{frame}
+        \transwipe
+        \frametitle{You recognize the fallacy}
+
+        It's not that regular expressions are \textbf{all} bad.
+        The RE syntax is a jumble of infix and postfix operators.
+
+        \vspace{1em}
+        It's that \textbf{overuse} of regular expressions can be bad.
+
+        (The Jamie Zawinski quote is about PERL.)
+
+        You know: ``When your only tool is a hammer\dots''
+
+        \vspace{1em}
+        Pragmatically, a DSL divides the problem domain.
+
+        \begin{itemize}
+            \item You make a Domain-Specific Language.
+            \item Other people use the DSL to solve problems.
+        \end{itemize}
+
+    \end{frame}
+
+    \begin{frame}
+        \transwipe
+        \frametitle{Better RE's?}
+        \framesubtitle{A digression}
+
+        Consider Al Sweigart's HUMRE.
+
+        \vspace{1em}
+        It has all the regular expression features.
+
+        In \textbf{Python} syntax.
+
+        \vspace{1em}
+        HUMRE is a DSL for regular expressions in Python syntax.
+
+        \pause \vspace{1em}
+        \textit{And. Bonus. It supports my thesis.}
+    \end{frame}
+
+\section[Design]{DSL Design}
+
+    \begin{frame}
+        \transwipe
+        \sectionpage
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Behind the first door is a dark hallway}
+
+        The hallway leads to a door.
+        A sign on the door says \textbf{Model}.
+
+        \vspace{1em}
+        On your left, you find a door labeled \textbf{Syntax}.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Behind the \textbf{Syntax} door is a workroom}
+        There are two doors and an arch
+
+        \begin{itemize}
+        \item One door has a pair of worktables.
+
+        \item One door has a stack of shelves.
+
+        \item The arch is decorated with two snakes.
+        \end{itemize}
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{The two \textbf{Syntax} work tables}
+
+        One table has tools and libraries and modules and is labeled Tokenizer.
+
+        \vspace{1em}
+        The second table tools and libraries and is labeled Parser.
+
+        \vspace{1em}
+        There are helpful books by DABEAZ everywhere.
+
+        \vspace{1em}
+        You find a tidy pile of parts labeled \textbf{Lark} that looks promising.
+
+        \vspace{1em}
+        \begin{alertblock}<2>{Warning: Work!}
+        You'll have to build something to open the adjacent door.
+        \end{alertblock}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{The \textbf{Syntax} shelves}
+        Each shelf has a label:
+
+        \begin{itemize}
+        \item JSON
+
+        \item YAML
+
+        \item TOML
+
+        \item HUML
+        \end{itemize}
+
+        \vspace{1em}
+        \begin{block}<2>{That's easy.}
+        Pick one to open the adjacent door.
+        \end{block}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{The \textbf{Syntax} archway}
+        \framesubtitle{Flanked by two friendly-looking snakes}
+
+        \begin{alertblock}{Impossible!}
+        Even though you turned left through the \textbf{Syntax} door\dots
+
+        \vspace{1em}
+        The \textbf{Model} door is still ahead of you.
+        \end{alertblock}
+
+
+        \pause
+        \vspace{1em}
+        \textit{Where else could it be?}
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Why Python?}
+
+        Use Python and you don't need to write a parser.
+
+        \begin{block}{But Whatabout...?}
+            \begin{itemize}
+                \item<+-| alert@+> Security? The DSL is Code!
+
+                \vspace{12pt}
+                \uncover<+->{
+                A chaotic evil 9th level Sorcerer won't waste time hacking  \mintinline{py}{rot13("vzcbeg bf; bf.flfgrz('sbezng p:')")} into DSL-based content.
+
+                The \textbf{whole app} is visible, hackable Python.
+
+                Consider a side-quest to query the Sphinx.
+                }
+
+                \item<+-| alert@+> The really ugly data model?
+
+                \vspace{12pt}
+                \uncover<+->{Wait for case study 2.}
+            \end{itemize}
+        \end{block}
+    \end{frame}
+
+\section[Case Study 1]{Case Study 1 --- Dice}
+    \begin{frame}
+        \sectionpage
+    \end{frame}
+
+    \begin{frame}[fragile]
+        \frametitle{TTRPG ``dice expressions''}
+
+        \begin{example}
+        \verb|3d6+2| \hfill ``roll 3 six-sided dice, add 2''
+        \end{example}
+
+        \begin{example}
+        \verb|4d8| \hfill ``roll 4 eight-sided dice''
+        \end{example}
+
+        There's more, but that's for lower levels of the dungeon.
+
+        \vspace{1em}
+        Which path?
+
+        \begin{itemize}
+            \item Turn left and write RE's for the syntax?
+            \item Define Python classes and objects?
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{How to proceed?}
+
+
+        \begin{block}{Strategy Tip}
+        Adjust the syntax to be Pythonic.
+
+        \vspace{1em}
+        From this: \(3d6+2\).
+
+        \vspace{1em}
+        To this: \texttt{3 * D6 + 2}
+        \end{block}
+
+        \begin{block}<2>{Why add the *?}
+            Python syntax lets you teleport straight to the data model.
+        \end{block}
+    \end{frame}
+
+    \begin{frame}[fragile]
+        \frametitle{The Dice class}
+
+        \begin{minted}[autogobble,fontsize=\footnotesize]{py}
+            class Die:
+                def __init__(self, faces: int = 6, n: int = 1) -> None:
+                    ...
+                def __rmul__(self, other: Any) -> Die:
+                    match other:
+                        case int():
+                            return Die(self.faces, n * other)
+                        case _:
+                            return NotImplemented
+
+            D6 = D(6)
+        \end{minted}
+
+        Now, \mintinline{py}{3 * D6} works.
+
+    \end{frame}
+
+
+\section[Case Study 2]{Case Study 2 --- OpenD6 Spells}
+    \begin{frame}
+        \sectionpage
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Context --- legacy data}
+
+        \textbf{OpenD6} rules have an Open Gaming License (OGL), making them open source with attribution.
+        Pefect for extensions and customizations.
+
+        I wanted \textbf{all} the magical spell definitions.
+
+        \pause \vspace{1em}
+        Which are in PDF's.
+
+        \pause \vspace{1em}
+        Scanned from a printed copy.
+
+        \pause \vspace{1em}
+        How to capture legacy data?
+
+        \begin{block}{Strategy Tip}
+            \begin{enumerate}
+                \item Define a throw-away data structure to capture legacy content.
+                \item Work out a more useful, semantically complete DSL.
+            \end{enumerate}
+        \end{block}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Legacy Data Model}
+
+        \begin{center}
+        \includegraphics[height=0.75\textheight]{legacy_capture.png}
+        \end{center}
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{DSL Data Model}
+
+        \includegraphics[width=1.0\textwidth]{dsl_model.png}
+
+        \uncover<2->{Yes, it's complicated.}
+
+        \uncover<3->{I omitted some stuff, and it was still vast.}
+    \end{frame}
+
+
+    \begin{frame}[fragile]
+        \frametitle{Example}
+        \begin{minted}[autogobble,fontsize=\scriptsize]{python}
+        Spell(
+            name="Push",
+            skill="Apportation",
+            notes="Even the most subtle of things,,,",
+            effect=TimeEffect("sends a small object into the future", "10 min"),
+            duration=DurationAspect(measure="10 minutes"),
+            range=RangeAspect(measure="touch"),
+            casting_time=CastingTimeAspect(measure="1 round"),
+            speed=SpeedAspect.based_on(("range",), ""),
+            other_aspects={
+                "gestures": GesturesAspect("Wave one hand ...", "simple"),
+                "incantations": IncantationsAspect(
+                   "Where did it go?", "sentence"
+                ),
+            },
+        )
+        \end{minted}
+        \vspace{1em}
+        It has a lot boilerplate.  API design is ongoing.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Typical DSL Use Cases}
+
+        \begin{itemize}
+            \item Represent legacy content and rules in the DSL.
+
+            \item Compute derived values.
+
+            (Compare with legacy sources as acceptance test case.)
+
+            \item Present content in RST format for publication.
+
+            \item Identify special cases and possible errors.
+        \end{itemize}
+
+        \begin{block}<2->{DSL and Learning}
+            \begin{itemize}
+                \item <2-| alert@+>
+                    Unless you're already the leading expert in the problem domain,
+                    expect the DSL to evolve.
+
+                \item <3-| alert@+>
+                    DSL evolution will reflect the lessons learned.
+
+                    The SOLID \textbf{Open/Closed Principle} is your friend.
+            \end{itemize}
+        \end{block}
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Whatabout the ugly data model?}
+
+        \begin{block}{Strategy Tip}
+            Replace tears with tiers.
+
+            \begin{description}
+                \item<+-| alert@+>[Foundation] Your ugly domain model that really captures \textbf{everything} the end users are prattling on about.
+                \item<+-| alert@+>[API] A layer on top of the ugly foundation that creates the classes and objects for a pleasant, easier-to-use DSL.
+            \end{description}
+        \end{block}
+
+        \begin{block}<+->{This is Pythonic OO design.}
+            Patterns to use:
+            \begin{itemize}
+                \item Façade -- Koan 5: flat is better than nested
+                \item Adapter -- Koan 8: make special cases fit the rules
+            \end{itemize}
+            More ideas? Run \mintinline{py}{import this}
+        \end{block}
+
+    \end{frame}
+
+\section{Conclusion}
+    \begin{frame}
+        \sectionpage
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Tips for DSL Design}
+        \begin{itemize}
+            \item<+-> Use Python as the syntax for your DSL.
+            \item<+-> Capture legacy rules with a quick-and-dirty model.
+            \item<+-> As you learn\dots build a complete DSL model.
+            \item<+-> As you learn even more\dots wrap the complicated parts of the DSL model to simplify the API.
+        \end{itemize}
+    \end{frame}
+
+
+\appendix
+\section{\appendixname}
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\subsection{Malicius Actors}
+
+    \begin{frame}
+        \frametitle{Malicious Actors}
+
+        \begin{block}{Complicated Situation}
+        Untrusted sources + large DSL docs + difficulty in doing Quality Assurance.
+        \end{block}
+
+        \begin{itemize}
+            \item Use JSON or TOML.
+
+            Use a \texttt{@classmethod} to build \texttt{Spell} from \texttt{dict[str, Any]} content.
+
+            \item Don't allow a spell-book module to use \mintinline{py}{import}.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+        \frametitle{Compile, Check, Exec}
+        Compile
+        \begin{minted}[autogobble,fontsize=\scriptsize]{python}
+    source = Path(module).with_suffix(".py").read_text()
+    spell_book_code = ast.parse(source, module, "exec")
+        \end{minted}
+        Check
+        \begin{minted}[autogobble,fontsize=\scriptsize]{python}
+    visitor = AllImports(source)
+    visitor.visit(spell_book_code)
+    if visitor.imports:
+        raise ValueError(f"import detected: {visitor.imports}")
+        \end{minted}
+        Exec
+        \begin{minted}[autogobble,fontsize=\scriptsize]{python}
+    global_defs: dict[str, Any] = {}
+    local_vars: dict[str, Any] = {}
+    exec("from magic2 import *", global_defs, local_vars)
+    exec(source, global_defs, local_vars)
+    return local_vars["spells"]
+        \end{minted}
+    \end{frame}
+
+    \begin{frame}[fragile]
+        \frametitle{The \texttt{AllImports} visitor}
+        \begin{minted}[autogobble,fontsize=\scriptsize]{python}
+class AllImports(ast.NodeVisitor):
+    def __init__(self, source: str) -> None:
+        self.source = source
+        self.imports: list[str | None] = []
+
+    def visit_Import(self, node: ast.Import) -> None:
+        self.imports.append(ast.get_source_segment(self.source, node))
+
+    def visit_ImportFrom(self, node: ast.ImportFrom) -> None:
+        self.imports.append(ast.get_source_segment(self.source, node))
+        \end{minted}
+    \end{frame}
+
+\end{document}

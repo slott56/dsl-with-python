@@ -1,0 +1,20 @@
+[project]
+name = "dsl-with-python"
+version = "2025.11"
+description = "Presentation for DSL Design with Python using TTRPG Examples"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+# LaTeX book is 6x9 size.
+# line-length = 60 # for LaTeX font size \\small
+# line-length = 74 # for LaTeX font size \\scriptsize
+# \\tiny might be too small.
+[tool.ruff]
+line-length = 72
+indent-width = 4
+target-version = "py313"

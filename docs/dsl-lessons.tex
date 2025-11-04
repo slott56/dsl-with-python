@@ -1,0 +1,427 @@
+%! Author = slott
+%! Date = 28-sep-2025
+
+% Preamble
+\documentclass{beamer}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{minted}
+\usepackage{hyperref}
+\usepackage{qrcode}
+\usepackage[shortcuts]{extdash}
+
+\usetheme{PaloAlto}
+\usecolortheme{seagull}
+\usemintedstyle{bw}
+
+\title{DSL Lessons}
+\subtitle{from Table-Top Role-Playing Games (TTRPG)}
+\author{S.Lott}
+\institute{\texttt{\underline{https://fosstodon.org/@slott56}}\linebreak{}\texttt{\underline{https://github.com/slott56}}}
+\date{28-Sep-2025}
+
+% Document
+\begin{document}
+
+\frame{
+    \titlepage
+}
+
+%\begin{frame}
+%    \frametitle{Link to Slide Deck Repository}
+%    \qrcode[link]{https://github.com/slott56/writing-tools}
+%    \hfill
+%    \underline{https://github.com/slott56/writing-tools}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+
+\section{What's this about?}
+
+\begin{frame}
+    \frametitle{TTRPG? DSL?}
+    \framesubtitle{Wait, what?}
+
+    \begin{itemize}
+
+        \item A Domain-Specific Language (DSL) can be \textbf{very} hard to design.
+
+        \item A Table-Top Role-Playing Game (TTRPG) is a complicated problem domain.
+        (And fun. And low-risk.)
+
+        \item Designing a DSL for a TTRPG can provide insight into DSL design.
+    \end{itemize}
+
+    We'll look at two examples.
+\end{frame}
+
+\section{Some background}
+
+\begin{frame}
+    \frametitle{About Me}
+
+    This starts almost half a century ago.
+
+    In the previous millennium.
+
+    \begin{itemize}
+        \item First TTRPG: D\&D Original Edition in 1976.
+        \item First personal computer: Apple ][+ in 1982.
+        \item Started using Python in 1998.
+    \end{itemize}
+    \vspace{1em}
+    TL;DR: I'm an old.
+
+    [I'll try to minimize rambling about the olden days.]
+\end{frame}
+
+\begin{frame}
+    \frametitle{About DSLs}
+
+    \textbf{Domain-Specific Language}
+
+    Anything \textbf{not} a general-purpose programming language.
+
+    We are surrounded by DSL's.
+    \begin{itemize}
+        \item HTML
+        \item CSS
+        \item Makefiles
+        \item JSON, YAML, TOML, HUML
+        \item Regular Expressions
+    \end{itemize}
+    \vspace{1em}
+    I could go on.
+
+    The number of DSL's is an actual problem.
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Important Consideration}
+
+    \begin{block}<1->{Question to ask yourself}
+    Do you need a unique DSL?
+    \end{block}
+
+    \begin{block}<2->{Choices}
+        \begin{itemize}
+            \item Can you get by with TOML/HUML/YAML or JSON?
+            \item Is Python all you need?
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Big Lesson Up Front}
+
+    \begin{alertblock}{Important}
+    Python may be all you need.
+
+    \vspace{1em}
+    Start there.
+    \end{alertblock}
+
+\end{frame}
+
+\section{Starting example}
+\begin{frame}
+    \frametitle{Dice-Rolling Language}
+    \framesubtitle{3d6+2}
+
+    This is an easy place to start.
+
+    \vspace{1em}
+    \fbox{\texttt{3d6 + 2}} is a syntax for rolling polydedral dice.
+    In this case 3 6-sided die; then adding 2.
+
+    \vspace{1em}
+    D\&D used platonic solids: d4, d6, d8, d12, d20.
+
+    Other games added a d10 (which isn't a platonic solid)
+\end{frame}
+
+\begin{frame}
+    \frametitle{And the complication}
+    \framesubtitle{there's always a complication}
+
+    The ``keep'' and ``drop'' dice mechanics.
+    Roll 4 dice, keep the top 3. Or drop the lowest 1.
+
+    \fbox{\texttt{4d6k3}} or \fbox{\texttt{4d6d1}}
+
+    \vspace{1em}
+    Four cases? Or only two?
+    \begin{itemize}
+        \item \texttt{k}\textit{n} --- Keep highest \textit{n}
+        \item \texttt{d}\textit{n} --- Drop highest \textit{n}
+        \item Keep lowest? How do we distinguish keep highest from keep lowest? \(k\wedge\) and \(k\vee\)?
+        \item Drop lowest?
+    \end{itemize} \pause
+
+    \vspace{1em}
+    \begin{alertblock}{Stop. Breathe.}
+    Do we need all of this?
+    \end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Or. Maybe just Python}
+    \begin{minted}[gobble=8]{python}
+        weapon_damage = 3 * D6 + 2
+
+        characteristic = (4 * D6).keep(3)
+        character = [
+            characteristic.roll() for _ in range(6)
+        ]
+    \end{minted}
+    \vspace{1em}
+    Looks good to me. \texttt{3*D6+2} vs. \texttt{3d6+2}
+
+    One extra \texttt{*}.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{How does that work?}
+    \begin{minted}[gobble=8]{python}
+        class Die:
+            def __init__(self, d: int) -> None:
+                ...
+            def __rmul__(self, n: int) -> "Die":
+                ...
+            def __add__(self, n: int) -> "Die":
+                ...
+            def keep(self, k: int) -> "Die":
+                ...
+        D6 = Die(6)
+    \end{minted}
+    The implementation isn't \textit{too} complicated.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Python?}
+    \begin{block}{Advantages}
+        \begin{itemize}
+            \item No parser needed.
+            \item Unit tests can be docstrings.
+        \end{itemize}
+    \end{block}
+    \begin{block}{Disadvantages}
+        \begin{itemize}
+            \item Some extra punctuation.
+            \item Maybe use \texttt{kh()} instead of \texttt{keep()}
+            Or use the \texttt{\_\_rshift\_\_()} operator:
+            \texttt{4 * D6 >> 3}.
+        \end{itemize}
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{What have we learned?}
+    \framesubtitle{Python's OK.}
+
+    \begin{itemize}
+        \item Python object creation syntax is acceptable for declarative syntax.
+        \item Python class definitions provide working code behind the object declarations.
+        \item You don't have to write a parser.
+        \item You can focus on the game rules.
+    \end{itemize} \pause
+
+    \vspace{1em}
+    \textit{Read: Enterprise Business Rules.}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Obligatory Evil Super-Genius\textsuperscript{\small{\texttrademark}} Remark}
+    Yes. The Evil Super-Genius (ESG\textsuperscript{\small{\texttrademark}})
+    can --- and will --- hack your Python-based DSL.
+
+    \vspace{1em}
+    They will inject state-changing statements into otherwise declarative code.
+
+    \vspace{1em}
+    Look at Sphinx with it's \texttt{conf.py} configuration file.
+    People are always hacking it to change the \texttt{sys.path} value.
+
+    \begin{alertblock}<2->{Sarcasm}
+    I have mention the remark is sardonic.
+
+    There's always someone who's sure Python\-/as\-/declarative\-/language can't work in practice.
+
+    Even when it does.
+    \end{alertblock}
+
+\end{frame}
+
+\section{Bigger example}
+
+\begin{frame}
+    \frametitle{The OpenD6 System}
+
+    Why OpenD6?
+
+    The Open Game License (OGL) makes the rules open-source.
+
+    It was new (to me).
+
+    It seems to have a bunch of TTRPG advantages over other games. \pause
+
+    \vspace{1em}
+    [Skipping a lot of blah-blah-blah. Cut to the DSL!]
+\end{frame}
+
+\begin{frame}
+    \frametitle{OpenD6 Magic}
+    The OpenD6 Fantasy rules define a bunch of magical spells.
+
+    \vspace{1em}
+    There are pages of rules.
+
+    \vspace{1em}
+    The gamemaster is given a little bit of advice on the complicated rules for spell definitions.
+
+    \begin{itemize}
+        \item An ``Adjusting and Readjusting'' admonition on page 86.
+        \item A ``Spell Design'' sheet on page 96.
+        \item ``A calculator might also help.'' \textit{Really.}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{DSL Use Cases}
+
+    There are two things I need to do.
+
+    \begin{itemize}
+        \item Parse spell definitions from a variety of rule sources.
+        \item Create new spells.
+    \end{itemize}
+
+    \vspace{1em}
+    Ingesting is really important.
+
+    I want the \textit{OpenD6 Fantasy} spells, and the \textit{OpenD6 Magic Guidebook} spells.
+
+    \vspace{1em}
+    I'll be adapting some campaign and world-building from the Hero Game System to OpenD6. Why not?
+\end{frame}
+
+\begin{frame}
+    \frametitle{Strategy}
+    \begin{block}{Phase I}
+        \begin{enumerate}
+            \item Design some V1 Python classes for the underlying model.
+
+                \texttt{Spell}, \texttt{Effect}, \texttt{Attribute}, etc.
+
+            \item Parse some source text and build Python objects.
+
+                Confirm your understanding of the data model.
+
+            \item Make changes as new weirdnesses surface.
+
+                Until you can parse \texttt{everything}.
+            \item Add minimal unit tests for the model and the spells.
+        \end{enumerate}
+    \end{block}
+    \vspace{1em}
+    You now have some working code that \textit{seems} to fit the available data.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Strategy}
+    \begin{block}{Phase II}
+        \begin{enumerate}
+            \item Design the V2 Python classes.
+
+                Incorporate the lessons learned in parsing.
+
+            \item Write a v1 \(\rightarrow\) v2 translator.
+
+                Uncover numerous subtle issues that were glossed over in v1.
+            \item Serialize the final, complete v2 spells as Python objects.
+            \item Profit.
+        \end{enumerate}
+    \end{block}
+    The second generation DSL fits all the data.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Hey! Wait!}
+    ``I'm not stupid,'' you say. ``I don't need to write (and discard) a draft DSL to understand the problem domain.''
+
+    \vspace{1em}
+    That may be true.
+
+    I wouldn't bet on it.
+
+    \vspace{1em}
+    I would bet on writing V1 to learn how the problem domain \textbf{really} works.
+\end{frame}
+
+\section{Example}
+
+\begin{frame}[fragile]
+    \begin{minted}[gobble=4,fontsize=\scriptsize]{python}
+    Spell(
+        name="Push",
+        skill="Apportation",
+        notes="Even the most subtle of things,,,",
+        effect=TimeEffect("sends a small object into the future", "10 min"),
+        duration=DurationAspect(measure="10 minutes"),
+        range=RangeAspect(measure="touch"),
+        casting_time=CastingTimeAspect(measure="1 round"),
+        speed=SpeedAspect.based_on(("range",), ""),
+        other_aspects={
+            "gestures": GesturesAspect("Wave one hand ...", "simple"),
+            "incantations": IncantationsAspect(
+               "Where did it go?", "sentence"
+            ),
+        },
+        other_conditions=[
+            ArcaneKnowledgeAspect(0, "time"),
+            GenericAspect(difficulty=0, description="Difficulty: 10"),
+        ],
+    )
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{That looks acceptable}
+    Most of the spell details look like this.
+
+    \vspace{1em}
+    \begin{minted}[gobble=4,fontsize=\normalsize]{python}
+    Spell(
+        ...
+        duration=DurationAspect(measure="10 minutes"),
+        ...
+    ),
+    \end{minted}
+
+    \vspace{1em}
+    The essential \textit{label} = \textit{value} that we expect in TOML, JSON, etc.
+
+\end{frame}
+
+\section{Conclusion}
+    \begin{frame}
+        \frametitle{Summary}
+        Don't invent a DSL from scratch.
+
+        \vspace{1em}
+        Start with Python object definitions as your declarative language.
+
+        \vspace{1em}
+        Don't write a parser unless there's no alternative.
+    \end{frame}
+\end{document}

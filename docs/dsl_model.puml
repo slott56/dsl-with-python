@@ -1,0 +1,207 @@
+@startuml
+    'https://plantuml.com/class-diagram
+
+    enum Sign {
+        Increase
+        Decrease
+    }
+
+    interface DifficultyAdjustment {
+        incr_decr: Sign
+    }
+    interface IncreasesDifficulty
+    interface DecreasesDifficulty
+    DifficultyAdjustment <|-- IncreasesDifficulty
+    DifficultyAdjustment <|-- DecreasesDifficulty
+    IncreasesDifficulty -- Sign
+    DecreasesDifficulty -- Sign
+
+    abstract class Lookup {
+        choices: dict[name, Any]
+        parse(text)
+        value(measure)
+    }
+
+    class Modifier
+    Lookup <|-- Modifier
+
+    class Factor
+    Lookup <|-- Factor
+
+    class Unit {
+        value(measure)
+    }
+    Lookup <|-- Unit
+
+    class DieUnit
+    Unit <|-- DieUnit
+
+    class TimeUnit {
+        choices: dict[name, Any]
+    }
+    Unit <|-- TimeUnit
+    class DistUnit {
+        choices: dict[name, Any]
+    }
+    Unit <|-- DistUnit
+    class MassUnit {
+        choices: dict[name, Any]
+    }
+    Unit <|-- MassUnit
+    class VolumeUnit {
+        choices: dict[name, Any]
+    }
+    Unit <|-- VolumeUnit
+
+    Aspect -- Modifier : "Mixin"
+    Aspect -- Factor : "Mixin"
+    Aspect -- DifficultyAdjustment : "Mixin"
+
+    class TimeAspect
+    TimeAspect -- TimeUnit : "Mixin"
+
+    class DistanceAspect
+    DistanceAspect -- DistUnit : "Mixin"
+
+    Aspect <|-- TimeAspect
+    Aspect <|-- DistanceAspect
+
+        abstract class Aspect {
+            difficulty() -> int
+            points() -> int
+            description() -> str
+        }
+
+        abstract class Effect
+        IncreasesDifficulty <|--- Effect
+        Aspect <|-- Effect
+
+        abstract class MeasureEffect
+        Effect <|-- MeasureEffect
+        MeasureEffect --- DieUnit
+
+        class DamageEffect
+        MeasureEffect <|-- DamageEffect
+        DamageEffect --- DieUnit
+
+        class ProtectionEffect
+        MeasureEffect <|-- ProtectionEffect
+        ProtectionEffect --- DieUnit
+
+        class SkillEffect
+        MeasureEffect <|-- SkillEffect
+        SkillEffect --- DieUnit
+
+        class AttributeEffect
+        SkillEffect <|-- AttributeEffect
+
+        class SpecialAbilityEffect
+        Effect <|-- SpecialAbilityEffect
+
+        class SpecialAbilityLookup
+        Lookup <|-- SpecialAbilityLookup
+        SpecialAbilityEffect -- SpecialAbilityLookup : "Mixin"
+
+        class DisadvantageEffect
+        Effect <|-- DisadvantageEffect
+
+        class TimeEffect
+        MeasureEffect <|-- TimeEffect
+        TimeEffect -- TimeUnit
+
+        class MassEffect
+        MeasureEffect <|-- MassEffect
+        MassEffect -- MassUnit
+
+        class DistanceEffect
+        MeasureEffect <|-- DistanceEffect
+        DistanceEffect -- DistUnit
+
+        class CompositeEffect
+        CompositeEffect *-- Effect
+        Effect <|-- CompositeEffect
+
+    class GenericAspect
+    Aspect <|-- GenericAspect
+    GenericAspect --- IncreasesDifficulty
+
+    class AreaModifier
+    Modifier <|-- AreaModifier
+    class AreaEffectAspect
+    AreaEffectAspect --- IncreasesDifficulty
+    AreaEffectAspect -- AreaModifier
+    Aspect <|-- AreaEffectAspect
+
+    class TargetModifier
+    Modifier <|-- TargetModifier
+    class ChangeTargetAspect
+    ChangeTargetAspect --- IncreasesDifficulty
+    ChangeTargetAspect -- TargetModifier
+    Aspect <|-- ChangeTargetAspect
+
+    class ChargesUnit
+    Unit <|-- ChargesUnit
+    class ChargesAspect
+    ChargesAspect --- IncreasesDifficulty
+    ChargesAspect -- ChargesUnit
+    Aspect <|-- ChargesAspect
+
+    class FocusedAspect
+    FocusedAspect --- IncreasesDifficulty
+    Aspect <|-- FocusedAspect
+
+    class MultipleTargetsModifier
+    Modifier <|-- MultipleTargetsModifier
+    class MultipleTargetAspect
+    MultipleTargetAspect --- IncreasesDifficulty
+    MultipleTargetAspect -- MultipleTargetsModifier
+    Aspect <|-- MultipleTargetAspect
+
+    class VariableDurationModifier
+    Modifier <|-- VariableDurationModifier
+    class VariableDurationAspect
+    VariableDurationAspect --- IncreasesDifficulty
+    VariableDurationAspect -- VariableDurationModifier
+    Aspect <|-- VariableDurationAspect
+
+    class VariableMovementModifier
+    Modifier <|-- VariableMovementModifier
+    class VariableMovementAspect
+    VariableMovementAspect --- IncreasesDifficulty
+    VariableMovementAspect -- VariableMovementModifier
+    Aspect <|-- VariableMovementAspect
+    class Spell {
+        name: str
+        effect: Effect
+        duration: DurationAspect
+        range: RangeAspect
+        casting_time: CastingTimeAspect
+        speed: SpeedAspect
+        skill: str
+        notes: str
+        other_aspects: OtherAspects
+        conditions: list[GenericAspect]
+        csv() -> tuple[str, ...]
+    }
+
+    Spell -- Effect
+    Spell -- DurationAspect
+    Spell -- RangeAspect
+    Spell -- CastingTimeAspect
+    Spell -- SpeedAspect
+    Spell -- OtherAspects
+    OtherAspects *-- Aspect
+    Spell *-- GenericAspect
+
+    Aspect <|-- DurationAspect
+    Aspect <|-- RangeAspect
+    Aspect <|-- CastingTimeAspect
+    Aspect <|-- SpeedAspect
+
+    class Miracle
+    Spell <|-- Miracle
+
+    class Cantrip
+    Spell <|-- Cantrip
+
+@enduml

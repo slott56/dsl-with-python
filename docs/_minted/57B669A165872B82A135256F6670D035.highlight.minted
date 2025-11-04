@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{visitor} \PYG{o}{=} \PYG{n}{AllImports}\PYG{p}{(}\PYG{n}{source}\PYG{p}{)}
+\PYG{n}{visitor}\PYG{o}{.}\PYG{n}{visit}\PYG{p}{(}\PYG{n}{spell\PYGZus{}book\PYGZus{}code}\PYG{p}{)}
+\PYG{k}{if} \PYG{n}{visitor}\PYG{o}{.}\PYG{n}{imports}\PYG{p}{:}
+    \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}import detected: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{visitor}\PYG{o}{.}\PYG{n}{imports}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

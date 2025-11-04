@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{source} \PYG{o}{=} \PYG{n}{Path}\PYG{p}{(}\PYG{n}{module}\PYG{p}{)}\PYG{o}{.}\PYG{n}{with\PYGZus{}suffix}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}.py\PYGZdq{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{read\PYGZus{}text}\PYG{p}{()}
+\PYG{n}{spell\PYGZus{}book\PYGZus{}code} \PYG{o}{=} \PYG{n}{ast}\PYG{o}{.}\PYG{n}{parse}\PYG{p}{(}\PYG{n}{source}\PYG{p}{,} \PYG{n}{module}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}exec\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

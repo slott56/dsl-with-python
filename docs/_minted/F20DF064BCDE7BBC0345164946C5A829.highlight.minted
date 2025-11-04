@@ -1,0 +1,18 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Spell}\PYG{p}{(}
+    \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Push\PYGZdq{}}\PYG{p}{,}
+    \PYG{n}{skill}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Apportation\PYGZdq{}}\PYG{p}{,}
+    \PYG{n}{notes}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Even the most subtle of things,,,\PYGZdq{}}\PYG{p}{,}
+    \PYG{n}{effect}\PYG{o}{=}\PYG{n}{TimeEffect}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}sends a small object into the future\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}10 min\PYGZdq{}}\PYG{p}{),}
+    \PYG{n}{duration}\PYG{o}{=}\PYG{n}{DurationAspect}\PYG{p}{(}\PYG{n}{measure}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}10 minutes\PYGZdq{}}\PYG{p}{),}
+    \PYG{n+nb}{range}\PYG{o}{=}\PYG{n}{RangeAspect}\PYG{p}{(}\PYG{n}{measure}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}touch\PYGZdq{}}\PYG{p}{),}
+    \PYG{n}{casting\PYGZus{}time}\PYG{o}{=}\PYG{n}{CastingTimeAspect}\PYG{p}{(}\PYG{n}{measure}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}1 round\PYGZdq{}}\PYG{p}{),}
+    \PYG{n}{speed}\PYG{o}{=}\PYG{n}{SpeedAspect}\PYG{o}{.}\PYG{n}{based\PYGZus{}on}\PYG{p}{((}\PYG{l+s+s2}{\PYGZdq{}range\PYGZdq{}}\PYG{p}{,),} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{p}{),}
+    \PYG{n}{other\PYGZus{}aspects}\PYG{o}{=}\PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}gestures\PYGZdq{}}\PYG{p}{:} \PYG{n}{GesturesAspect}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Wave one hand ...\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}simple\PYGZdq{}}\PYG{p}{),}
+        \PYG{l+s+s2}{\PYGZdq{}incantations\PYGZdq{}}\PYG{p}{:} \PYG{n}{IncantationsAspect}\PYG{p}{(}
+           \PYG{l+s+s2}{\PYGZdq{}Where did it go?\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}sentence\PYGZdq{}}
+        \PYG{p}{),}
+    \PYG{p}{\PYGZcb{},}
+\PYG{p}{)}
+\end{MintedVerbatim}

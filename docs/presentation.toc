@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{The DSL Conundrum --- You have a problem...}{3}{0}{1}
+\beamer@sectionintoc {2}{DSL Design}{7}{0}{2}
+\beamer@sectionintoc {3}{Case Study 1 --- Dice}{20}{0}{3}
+\beamer@sectionintoc {4}{Case Study 2 --- OpenD6 Spells}{25}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{41}{0}{5}
+\beamer@sectionintoc {6}{\translate {Appendix}}{46}{1}{6}
+\beamer@subsectionintoc {6}{1}{Malicius Actors}{47}{1}{6}
