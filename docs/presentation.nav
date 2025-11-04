@@ -2,88 +2,92 @@
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
-\headcommand {\beamer@sectionpages {1}{2}}
-\headcommand {\beamer@subsectionpages {1}{2}}
-\headcommand {\sectionentry {1}{A Conundrum}{3}{The DSL Conundrum --- You have a problem...}{0}}
-\headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
+\headcommand {\slideentry {0}{0}{3}{3/3}{}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {1}{0}{2}{4/4}{}{0}}
+\headcommand {\beamer@sectionpages {1}{3}}
+\headcommand {\beamer@subsectionpages {1}{3}}
+\headcommand {\sectionentry {1}{A Conundrum}{4}{The DSL Conundrum --- You have a problem...}{0}}
+\headcommand {\slideentry {1}{0}{1}{4/4}{}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\slideentry {1}{0}{3}{5/6}{}{0}}
-\headcommand {\beamer@framepages {5}{6}}
-\headcommand {\beamer@sectionpages {3}{6}}
-\headcommand {\beamer@subsectionpages {3}{6}}
-\headcommand {\sectionentry {2}{Design}{7}{DSL Design}{0}}
-\headcommand {\slideentry {2}{0}{1}{7/7}{}{0}}
-\headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {2}{0}{2}{8/8}{}{0}}
+\headcommand {\slideentry {1}{0}{2}{5/5}{}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\slideentry {1}{0}{3}{6/7}{}{0}}
+\headcommand {\beamer@framepages {6}{7}}
+\headcommand {\beamer@sectionpages {4}{7}}
+\headcommand {\beamer@subsectionpages {4}{7}}
+\headcommand {\sectionentry {2}{Design}{8}{DSL Design}{0}}
+\headcommand {\slideentry {2}{0}{1}{8/8}{}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {2}{0}{3}{9/9}{}{0}}
+\headcommand {\slideentry {2}{0}{2}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {2}{0}{4}{10/11}{}{0}}
-\headcommand {\beamer@framepages {10}{11}}
-\headcommand {\slideentry {2}{0}{5}{12/13}{}{0}}
-\headcommand {\beamer@framepages {12}{13}}
-\headcommand {\slideentry {2}{0}{6}{14/15}{}{0}}
-\headcommand {\beamer@framepages {14}{15}}
-\headcommand {\slideentry {2}{0}{7}{16/19}{}{0}}
-\headcommand {\beamer@framepages {16}{19}}
-\headcommand {\beamer@sectionpages {7}{19}}
-\headcommand {\beamer@subsectionpages {7}{19}}
-\headcommand {\sectionentry {3}{Case Study 1}{20}{Case Study 1 --- Dice}{0}}
-\headcommand {\slideentry {3}{0}{1}{20/20}{}{0}}
-\headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {3}{0}{2}{21/21}{}{0}}
+\headcommand {\slideentry {2}{0}{3}{10/10}{}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\slideentry {2}{0}{4}{11/12}{}{0}}
+\headcommand {\beamer@framepages {11}{12}}
+\headcommand {\slideentry {2}{0}{5}{13/14}{}{0}}
+\headcommand {\beamer@framepages {13}{14}}
+\headcommand {\slideentry {2}{0}{6}{15/16}{}{0}}
+\headcommand {\beamer@framepages {15}{16}}
+\headcommand {\slideentry {2}{0}{7}{17/20}{}{0}}
+\headcommand {\beamer@framepages {17}{20}}
+\headcommand {\beamer@sectionpages {8}{20}}
+\headcommand {\beamer@subsectionpages {8}{20}}
+\headcommand {\sectionentry {3}{Case Study 1}{21}{Case Study 1 --- Dice}{0}}
+\headcommand {\slideentry {3}{0}{1}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {3}{0}{3}{22/23}{}{0}}
-\headcommand {\beamer@framepages {22}{23}}
-\headcommand {\slideentry {3}{0}{4}{24/24}{}{0}}
-\headcommand {\beamer@framepages {24}{24}}
-\headcommand {\beamer@sectionpages {20}{24}}
-\headcommand {\beamer@subsectionpages {20}{24}}
-\headcommand {\sectionentry {4}{Case Study 2}{25}{Case Study 2 --- OpenD6 Spells}{0}}
-\headcommand {\slideentry {4}{0}{1}{25/25}{}{0}}
+\headcommand {\slideentry {3}{0}{2}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {3}{0}{3}{23/24}{}{0}}
+\headcommand {\beamer@framepages {23}{24}}
+\headcommand {\slideentry {3}{0}{4}{25/25}{}{0}}
 \headcommand {\beamer@framepages {25}{25}}
-\headcommand {\slideentry {4}{0}{2}{26/29}{}{0}}
-\headcommand {\beamer@framepages {26}{29}}
-\headcommand {\slideentry {4}{0}{3}{30/30}{}{0}}
-\headcommand {\beamer@framepages {30}{30}}
-\headcommand {\slideentry {4}{0}{4}{31/33}{}{0}}
-\headcommand {\beamer@framepages {31}{33}}
-\headcommand {\slideentry {4}{0}{5}{34/34}{}{0}}
-\headcommand {\beamer@framepages {34}{34}}
-\headcommand {\slideentry {4}{0}{6}{35/37}{}{0}}
-\headcommand {\beamer@framepages {35}{37}}
-\headcommand {\slideentry {4}{0}{7}{38/40}{}{0}}
-\headcommand {\beamer@framepages {38}{40}}
-\headcommand {\beamer@sectionpages {25}{40}}
-\headcommand {\beamer@subsectionpages {25}{40}}
-\headcommand {\sectionentry {5}{Conclusion}{41}{Conclusion}{0}}
-\headcommand {\slideentry {5}{0}{1}{41/41}{}{0}}
-\headcommand {\beamer@framepages {41}{41}}
-\headcommand {\slideentry {5}{0}{2}{42/45}{}{0}}
-\headcommand {\beamer@framepages {42}{45}}
-\headcommand {\gdef \insertmainframenumber {25}}
-\headcommand {\partentry {\translate {Appendix}}{1}}
-\headcommand {\beamer@partpages {1}{45}}
-\headcommand {\beamer@sectionpages {41}{45}}
-\headcommand {\beamer@subsectionpages {41}{45}}
-\headcommand {\beamer@appendixpages {46}}
-\headcommand {\beamer@sectionpages {46}{45}}
-\headcommand {\beamer@subsectionpages {46}{45}}
-\headcommand {\sectionentry {6}{\translate {Appendix}}{46}{\translate {Appendix}}{1}}
-\headcommand {\slideentry {6}{0}{1}{46/46}{}{1}}
-\headcommand {\beamer@framepages {46}{46}}
-\headcommand {\beamer@subsectionpages {46}{46}}
-\headcommand {\beamer@subsectionentry {1}{6}{1}{47}{Malicius Actors}}
-\headcommand {\slideentry {6}{1}{1}{47/47}{Malicius Actors}{1}}
+\headcommand {\beamer@sectionpages {21}{25}}
+\headcommand {\beamer@subsectionpages {21}{25}}
+\headcommand {\sectionentry {4}{Case Study 2}{26}{Case Study 2 --- OpenD6 Spells}{0}}
+\headcommand {\slideentry {4}{0}{1}{26/26}{}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\slideentry {4}{0}{2}{27/30}{}{0}}
+\headcommand {\beamer@framepages {27}{30}}
+\headcommand {\slideentry {4}{0}{3}{31/31}{}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\slideentry {4}{0}{4}{32/34}{}{0}}
+\headcommand {\beamer@framepages {32}{34}}
+\headcommand {\slideentry {4}{0}{5}{35/35}{}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\slideentry {4}{0}{6}{36/38}{}{0}}
+\headcommand {\beamer@framepages {36}{38}}
+\headcommand {\slideentry {4}{0}{7}{39/41}{}{0}}
+\headcommand {\beamer@framepages {39}{41}}
+\headcommand {\beamer@sectionpages {26}{41}}
+\headcommand {\beamer@subsectionpages {26}{41}}
+\headcommand {\sectionentry {5}{Conclusion}{42}{Conclusion}{0}}
+\headcommand {\slideentry {5}{0}{1}{42/42}{}{0}}
+\headcommand {\beamer@framepages {42}{42}}
+\headcommand {\slideentry {5}{0}{2}{43/46}{}{0}}
+\headcommand {\beamer@framepages {43}{46}}
+\headcommand {\slideentry {5}{0}{3}{47/47}{}{0}}
 \headcommand {\beamer@framepages {47}{47}}
-\headcommand {\slideentry {6}{1}{2}{48/48}{Malicius Actors}{1}}
+\headcommand {\gdef \insertmainframenumber {27}}
+\headcommand {\partentry {\translate {Appendix}}{1}}
+\headcommand {\beamer@partpages {1}{47}}
+\headcommand {\beamer@sectionpages {42}{47}}
+\headcommand {\beamer@subsectionpages {42}{47}}
+\headcommand {\beamer@appendixpages {48}}
+\headcommand {\beamer@sectionpages {48}{47}}
+\headcommand {\beamer@subsectionpages {48}{47}}
+\headcommand {\sectionentry {6}{\translate {Appendix}}{48}{\translate {Appendix}}{1}}
+\headcommand {\slideentry {6}{0}{1}{48/48}{}{1}}
 \headcommand {\beamer@framepages {48}{48}}
-\headcommand {\slideentry {6}{1}{3}{49/49}{Malicius Actors}{1}}
+\headcommand {\beamer@subsectionpages {48}{48}}
+\headcommand {\beamer@subsectionentry {1}{6}{1}{49}{Malicius Actors}}
+\headcommand {\slideentry {6}{1}{1}{49/49}{Malicius Actors}{1}}
 \headcommand {\beamer@framepages {49}{49}}
-\headcommand {\beamer@partpages {46}{49}}
-\headcommand {\beamer@subsectionpages {47}{49}}
-\headcommand {\beamer@sectionpages {46}{49}}
-\headcommand {\beamer@documentpages {49}}
-\headcommand {\gdef \inserttotalframenumber {29}}
+\headcommand {\slideentry {6}{1}{2}{50/50}{Malicius Actors}{1}}
+\headcommand {\beamer@framepages {50}{50}}
+\headcommand {\slideentry {6}{1}{3}{51/51}{Malicius Actors}{1}}
+\headcommand {\beamer@framepages {51}{51}}
+\headcommand {\beamer@partpages {48}{51}}
+\headcommand {\beamer@subsectionpages {49}{51}}
+\headcommand {\beamer@sectionpages {48}{51}}
+\headcommand {\beamer@documentpages {51}}
+\headcommand {\gdef \inserttotalframenumber {31}}
