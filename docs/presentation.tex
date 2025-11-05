@@ -10,10 +10,10 @@
 % Packages
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{minted}
 \usepackage{tikz}
 \usepackage{tikzscale}
-\usepackage{minted}
-\usepackage{hyperref}
 \usepackage{qrcode}
 
 % \usetheme{PaloAlto}
@@ -120,6 +120,31 @@
         \textit{And. Bonus. It supports my thesis.}
     \end{frame}
 
+    \begin{frame}
+        \frametitle{Occult DSL's}
+
+        You may have designed one of these DSL's.
+
+        \renewcommand{\arraystretch}{1.5} % Default value: 1
+        \begin{center}
+        \begin{tabular}{ |l|l| }
+        \hline
+        \textbf{DSL} & \textbf{Syntax} \\
+        \hline
+        Configuration file  & TOML or INI    \\
+        CLI                 & Shell syntax   \\
+        RESTful web service & HTTP plus JSON \\
+        \hline
+        \end{tabular}
+        \end{center}
+
+        Does the underlying object model count as a DSL?
+
+        \vspace{\baselineskip}
+        \pause\textit{Stick around and see where we wind up.}
+
+    \end{frame}
+
 \section[Design]{DSL Design}
 
     \begin{frame}
@@ -130,7 +155,7 @@
     \begin{frame}
         \frametitle{Behind the entrance door is a dark hallway.}
 
-        The hallway leads to another door.
+        The hallway ends at a door, covered in images of boxes and arrows.
         A sign on the door says \textbf{Model}.
 
         \vspace{\baselineskip}
@@ -144,19 +169,19 @@
 
         \begin{columns}[T]
         \column{0.33\textwidth}
-        \textbf{Door 1}:\\
-        two work tables
+        \textbf{Door 1}\\
+        Two work tables:
         \begin{itemize}
             \item  \textbf{Tokenizer}\\ tools and libraries and modules.
             \item  \textbf{Parser}\\ more tools and libraries.
         \end{itemize}
         Books by \textbf{DABEAZ} everywhere.\\
-        \vspace{\baselineskip}
+        \vspace{0.6\baselineskip}
         A pile of parts labeled \textbf{Lark}.
 
         \column{0.33\textwidth}
-        \textbf{Door 2}:\\
-        a shelf with labels
+        \textbf{Door 2}\\
+        A shelf with packages:
         \begin{itemize}
         \item JSON
         \item YAML
@@ -165,12 +190,14 @@
         \end{itemize}
 
         \column{0.33\textwidth}
-        \textbf{Archway}:\\
-        flanked by two friendly-looking snakes.\\
+        \textbf{Archway}\\
+        Flanked by two friendly-looking snakes.\\
         \vspace{\baselineskip}
         \textit{[Pythons? Roll an} Intellect \textit{check.]}\\
         \vspace{\baselineskip}
         You entered turning left through the \textbf{Syntax} door\dots\\
+
+        \vspace{0.5\baselineskip}
         The \textbf{Model} door is still ahead of you!
         \end{columns}
 
@@ -180,11 +207,11 @@
     \begin{frame}
         \frametitle{Why the Python door?}
 
-        You don't need yet another parser.
+        Avoid writing yet another parser.
 
-        \begin{block}{But \textit{whattabout}...?}
+        \begin{block}{Two \textit{whattabout} gremlins appear}
             \begin{itemize}
-                \item<+-| alert@+> Security? The DSL is Code!
+                \item<+-| alert@+> \textit{Whattabout} security? The DSL is Code!
 
                 \vspace{0.66\baselineskip}
                 \uncover<+->{
@@ -195,7 +222,7 @@
                 Consider a side-quest to query the Sphinx.
                 }
 
-                \item<+-| alert@+> The really ugly data model?
+                \item<+-| alert@+> \textit{Whattabout} the really ugly data model?
 
                 \vspace{0.66\baselineskip}
                 \uncover<+-| alert@+>{Wait for case study 2.}
@@ -249,8 +276,11 @@
         Python syntax lets you teleport straight to the data model.
 
         \pause
-        \begin{block}{But \textit{whattabout} the users?}
-            It's a \texttt{*}.
+        \begin{block}{A \textit{whattabout} gremlin appears}
+            But \textit{whattabout} the users?
+
+            \vspace{\baselineskip}
+            It's a \texttt{*}. \textit{One character.}
 
             If it helps them solve their problem, they'll embrace it.
         \end{block}
@@ -400,12 +430,13 @@
         \end{block}
 
         \begin{block}<+->{This is Pythonic OO design.}
-            Patterns to use:
+            Design patterns to use:
             \begin{itemize}
-                \item Façade -- Koan 5: flat is better than nested
-                \item Adapter -- Koan 8: make special cases fit the rules
+                \item Façade [koan 5]: Flat is better than nested
+                \item Adapter [koan 8]: Special cases aren't special enough to break the rules
             \end{itemize}
-            More ideas? Run \mintinline{py}{import this}
+            Want more ideas?
+            Run \mintinline{py}{import this} for all the koans.
         \end{block}
 
     \end{frame}
@@ -425,7 +456,8 @@
         \end{itemize}
         \vspace{\baselineskip}
         \begin{center}
-        \textbf{Pursue Pythonic Practices}
+        \begin{alert}{Pursue Pythonic Practices}
+        \end{alert}
         \end{center}
     \end{frame}
 
@@ -444,9 +476,9 @@
 
         \begin{block}{Are \textbf{all} elements present?}
             \begin{itemize}
-                \item Untrusted sources of DSL, and
-                \item Large DSL docs, and
-                \item Difficulty in doing code validation.
+                \item Untrusted sources of DSL,
+                \item And large DSL docs,
+                \item And difficulty in doing code validation.
             \end{itemize}
         \end{block}
 
